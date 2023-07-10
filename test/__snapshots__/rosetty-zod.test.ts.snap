@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 1`] = `"zod.errors.invalid_type_received_undefined"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 2`] = `"zod.errors.invalid_literal - {"expected":"\\"CHECK\\""}"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 3`] = `"zod.errors.unrecognized_keys - {"keys":"'tot'","count":1}"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 4`] = `"zod.errors.invalid_union"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 5`] = `"zod.errors.invalid_enum_value - {"options":"'Foo' | 'Bar'","received":"to"}"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 6`] = `"zod.errors.invalid_string.startsWith - {"startsWith":"toto"}"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 7`] = `"zod.errors.invalid_string.endsWith - {"endsWith":"toto"}"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 8`] = `"zod.errors.too_small.string.inclusive - {"minimum":5,"count":5}"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 9`] = `"zod.errors.too_big.string.inclusive - {"maximum":2,"count":2}"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 10`] = `"errors.custom"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 11`] = `"zod.errors.invalid_intersection_types"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 12`] = `"zod.errors.not_multiple_of - {"multipleOf":3}"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 13`] = `"zod.errors.not_finite"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 14`] = `"zod.errors.invalid_type - {"expected":"zod.types.number","received":"zod.types.bigint"}"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 15`] = `"zod.errors.invalid_union_discriminator - {"options":"'a' | 'b'"}"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 16`] = `"zod.errors.invalid_date"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 17`] = `"zod.errors.invalid_return_type"`;
+
+exports[`Rosetty Zod test all schema should be able to validate all schema 18`] = `"zod.errors.invalid_arguments"`;
