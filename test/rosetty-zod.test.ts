@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @jest-environment node
  */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { locales, rosetty } from 'rosetty';
 import { z, ZodError, ZodErrorMap } from 'zod';
