@@ -56,8 +56,8 @@ devDependencies:
     specifier: 3.0.2
     version: 3.0.2
   rosetty:
-    specifier: ^1.4.137
-    version: 1.4.137
+    specifier: ^2.0.0
+    version: 2.0.0
   size-limit:
     specifier: 8.2.6
     version: 8.2.6
@@ -1254,13 +1254,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.9
-    dev: true
-
-  /@babel/runtime@7.22.6:
-    resolution: {integrity: sha512-wDb5pWm4WDdF6LFUde3Jl8WzPA+3ZbxYqkC6xAXuD3irdEHN1k0NfTRrJD8ZD378SJ61miMLCqIOXYhd8x+AJQ==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      regenerator-runtime: 0.13.11
     dev: true
 
   /@babel/template@7.18.10:
@@ -3695,11 +3688,8 @@ packages:
       whatwg-url: 7.1.0
     dev: true
 
-  /date-fns@2.30.0:
-    resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
-    engines: {node: '>=0.11'}
-    dependencies:
-      '@babel/runtime': 7.22.6
+  /dayjs@1.11.9:
+    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
     dev: true
 
   /debug@2.6.9:
@@ -7943,10 +7933,6 @@ packages:
     resolution: {integrity: sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A==}
     dev: true
 
-  /regenerator-runtime@0.13.11:
-    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
-    dev: true
-
   /regenerator-runtime@0.13.9:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
     dev: true
@@ -8263,11 +8249,11 @@ packages:
       templite: 1.2.0
     dev: true
 
-  /rosetty@1.4.137:
-    resolution: {integrity: sha512-uyAoqS/P2R3P7oZHQgKDkvsNnPuQFlmCjh0JZQ6FrNrotwl5Cqe5lwHShjwNYY9LhYvWhlDc85Y4cS4NtqGDRA==}
+  /rosetty@2.0.0:
+    resolution: {integrity: sha512-OuE3zuv2xGtsBp1CYkCSQqS6sEtnSF7gzUKXeMm0cTLc8lf8b0yt9ttEfjJyrqMNXJtoQ+HnVLUgrpzPkeS9tg==}
     engines: {node: '>=10'}
     dependencies:
-      date-fns: 2.30.0
+      dayjs: 1.11.9
       rosetta: 1.1.0
     dev: true
 
