@@ -3,10 +3,12 @@
  */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { locales, rosetty } from 'rosetty';
+import { rosetty } from 'rosetty';
 import { z, ZodError, ZodErrorMap } from 'zod';
 
 import { translateZodErrorMessage, zodRosettyMap } from '../src';
+//@ts-ignore
+import enGB from 'dayjs/locale/en-gb';
 
 z.setErrorMap(zodRosettyMap);
 
@@ -54,7 +56,7 @@ describe('Rosetty Zod', () => {
 
   describe('translateZodErrorMessage', () => {
     const { t } = rosetty(
-      { en: { dict: rosettyMap, locale: locales.enGB } },
+      { en: { dict: rosettyMap, locale: enGB } },
       'en',
     );
 
