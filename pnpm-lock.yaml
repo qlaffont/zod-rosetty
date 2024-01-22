@@ -59,8 +59,8 @@ devDependencies:
     specifier: 3.2.4
     version: 3.2.4
   rosetty:
-    specifier: ^2.0.0
-    version: 2.0.0
+    specifier: ^3.0.0
+    version: 3.0.0
   size-limit:
     specifier: 11.0.2
     version: 11.0.2
@@ -3703,6 +3703,10 @@ packages:
       abab: 2.0.6
       whatwg-mimetype: 2.3.0
       whatwg-url: 7.1.0
+    dev: true
+
+  /date-fns@3.3.1:
+    resolution: {integrity: sha512-y8e109LYGgoQDveiEBD3DYXKba1jWf5BA8YU1FL5Tvm0BTdEfy54WLCwnuYWZNnzzvALy/QQ4Hov+Q9RVRv+Zw==}
     dev: true
 
   /dayjs@1.11.9:
@@ -8179,11 +8183,11 @@ packages:
       templite: 1.2.0
     dev: true
 
-  /rosetty@2.0.0:
-    resolution: {integrity: sha512-OuE3zuv2xGtsBp1CYkCSQqS6sEtnSF7gzUKXeMm0cTLc8lf8b0yt9ttEfjJyrqMNXJtoQ+HnVLUgrpzPkeS9tg==}
+  /rosetty@3.0.0:
+    resolution: {integrity: sha512-AqR6fSPkdVejbIeXtWIcIhHA5slceeJQMXIw2WjQqtds6S0Y06srJatxQUVBbXaM6z85AYqsr5ANPSjImjlbpw==}
     engines: {node: '>=10'}
     dependencies:
-      dayjs: 1.11.9
+      date-fns: 3.3.1
       rosetta: 1.1.0
     dev: true
 
