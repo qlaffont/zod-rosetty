@@ -31,9 +31,9 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: 6.19.0
     version: 6.19.0(eslint@8.56.0)(typescript@5.3.3)
-  dayjs:
-    specifier: ^1.11.9
-    version: 1.11.9
+  date-fns:
+    specifier: ^3.3.1
+    version: 3.3.1
   eslint:
     specifier: 8.56.0
     version: 8.56.0
@@ -3707,10 +3707,6 @@ packages:
 
   /date-fns@3.3.1:
     resolution: {integrity: sha512-y8e109LYGgoQDveiEBD3DYXKba1jWf5BA8YU1FL5Tvm0BTdEfy54WLCwnuYWZNnzzvALy/QQ4Hov+Q9RVRv+Zw==}
-    dev: true
-
-  /dayjs@1.11.9:
-    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
     dev: true
 
   /debug@2.6.9:

@@ -19,7 +19,8 @@ pnpm install zod-rosetty zod rosetty
 ```js
 import { z } from "zod";
 import { zodRosettyMap, ZodErrorMap } from "zod-rosetty";
-import { locales, rosetty } from 'rosetty';
+import { rosetty } from 'rosetty';
+import { enGB } from 'date-fns/locale';
 
 //Initialize Rosetty Error Map
 z.setErrorMap(zodRosettyMap);
@@ -38,7 +39,7 @@ const rosettyMap: ZodErrorMap = {
   },
 };
 const { t } = rosetty<typeof rosettyMap>(
-  { en: { dict: rosettyMap, locale: locales.enGB } },
+  { en: { dict: rosettyMap, locale: enGB } },
   'en',
 );
 
