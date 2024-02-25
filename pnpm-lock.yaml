@@ -60,7 +60,7 @@ devDependencies:
     version: 3.2.5
   rosetty:
     specifier: ^3.0.0
-    version: 3.0.0
+    version: 3.0.17
   size-limit:
     specifier: 11.0.2
     version: 11.0.2
@@ -3482,7 +3482,7 @@ packages:
       normalize-path: 3.0.0
       readdirp: 3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /ci-info@2.0.0:
@@ -4970,8 +4970,8 @@ packages:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
     dev: true
 
-  /fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+  /fsevents@2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
@@ -6130,7 +6130,7 @@ packages:
       walker: 1.0.8
       which: 2.0.2
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6151,7 +6151,7 @@ packages:
       micromatch: 4.0.5
       walker: 1.0.8
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /jest-haste-map@29.7.0:
@@ -6170,7 +6170,7 @@ packages:
       micromatch: 4.0.5
       walker: 1.0.8
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /jest-jasmine2@25.5.4:
@@ -8221,8 +8221,8 @@ packages:
       templite: 1.2.0
     dev: true
 
-  /rosetty@3.0.0:
-    resolution: {integrity: sha512-AqR6fSPkdVejbIeXtWIcIhHA5slceeJQMXIw2WjQqtds6S0Y06srJatxQUVBbXaM6z85AYqsr5ANPSjImjlbpw==}
+  /rosetty@3.0.17:
+    resolution: {integrity: sha512-AsJjQH2neZsYb9+ChKPnm4VFZqFWSnwvz8q6wE95juFPYEiVSvZjohJWEjdXIB9SuG+S50tdOOE3/uX5TV7HAQ==}
     engines: {node: '>=10'}
     dependencies:
       date-fns: 3.3.1
