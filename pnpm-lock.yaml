@@ -33,7 +33,7 @@ devDependencies:
     version: 7.1.1(eslint@8.57.0)(typescript@5.4.2)
   date-fns:
     specifier: ^3.3.1
-    version: 3.3.1
+    version: 3.4.0
   eslint:
     specifier: 8.57.0
     version: 8.57.0
@@ -3906,8 +3906,8 @@ packages:
       whatwg-url: 7.1.0
     dev: true
 
-  /date-fns@3.3.1:
-    resolution: {integrity: sha512-y8e109LYGgoQDveiEBD3DYXKba1jWf5BA8YU1FL5Tvm0BTdEfy54WLCwnuYWZNnzzvALy/QQ4Hov+Q9RVRv+Zw==}
+  /date-fns@3.4.0:
+    resolution: {integrity: sha512-Akz4R8J9MXBsOgF1QeWeCsbv6pntT5KCPjU0Q9prBxVmWJYPLhwAIsNg3b0QAdr0ttiozYLD3L/af7Ra0jqYXw==}
     dev: true
 
   /debug@2.6.9:
@@ -8247,7 +8247,7 @@ packages:
     resolution: {integrity: sha512-fIi8I9VrNiqtedPuhTgTRpgFRSBGGyaR92ijo0f9hNvDAQdoUGGYEH8KspNmmKPBqhZVtrQcoxuR+zUArmFkQA==}
     engines: {node: '>=10'}
     dependencies:
-      date-fns: 3.3.1
+      date-fns: 3.4.0
       rosetta: 1.1.0
     dev: true
 
