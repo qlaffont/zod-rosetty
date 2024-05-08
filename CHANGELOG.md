@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.172 (2024-05-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.23.7 ([15c9f77](https://github.com/qlaffont/zod-rosetty/commit/15c9f77cb6b80f324a26de11fc25372173643c3b))
+
 ### 1.0.171 (2024-05-03)
 
 
