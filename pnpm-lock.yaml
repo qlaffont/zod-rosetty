@@ -13,8 +13,8 @@ importers:
         version: 3.23.8
     devDependencies:
       '@fastify/swagger':
-        specifier: ^8.7.0
-        version: 8.15.0
+        specifier: ^9.0.0
+        version: 9.0.0
       '@fastify/swagger-ui':
         specifier: ^5.0.0
         version: 5.0.1
@@ -901,8 +901,8 @@ packages:
   '@fastify/swagger-ui@5.0.1':
     resolution: {integrity: sha512-nCDV5l0OTziK8nIeHaLZ30ENFFftZ4Pcs7GHDcqOO6Jp3qSnyOsqBg1/EosM+d1mrCvH4vSlM09xolkjrbuJQQ==}
 
-  '@fastify/swagger@8.15.0':
-    resolution: {integrity: sha512-zy+HEEKFqPMS2sFUsQU5X0MHplhKJvWeohBwTCkBAJA/GDYGLGUWQaETEhptiqxK7Hs0fQB9B4MDb3pbwIiCwA==}
+  '@fastify/swagger@9.0.0':
+    resolution: {integrity: sha512-E7TQbBCbhvS2djGLxJ7t2OFbhc2F+KCsOZCNhh6xQIlJxq9H4ZR5KuLKG+vn6COVqkLxRVUOZ9qtbbzdf5Jfqw==}
 
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -2388,9 +2388,6 @@ packages:
 
   fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
-
-  fastify-plugin@4.5.1:
-    resolution: {integrity: sha512-stRHYGeuqpEZTL1Ef0Ovr2ltazUT9g844X5z/zEBFLG8RYlpDiOCIG+ATvYEp+/zmc7sN29mcIMp8gvYplYPIQ==}
 
   fastify-plugin@5.0.0:
     resolution: {integrity: sha512-0725fmH/yYi8ugsjszLci+lLnGBK6cG+WSxM7edY2OXJEU7gr2JiGBoieL2h9mhTych1vFsEfXsAsGGDJ/Rd5w==}
@@ -4806,11 +4803,6 @@ packages:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==}
     engines: {node: '>= 6'}
 
-  yaml@2.4.5:
-    resolution: {integrity: sha512-aBx2bnqDzVOyNKfsysjA2ms5ZlnjSAW2eG3/L5G/CSujfjLJTJsEw1bGw8kCf04KodQWk1pxlGnZ56CRxiawmg==}
-    engines: {node: '>= 14'}
-    hasBin: true
-
   yaml@2.5.0:
     resolution: {integrity: sha512-2wWLbGbYDiSqqIKoPjar3MPgB94ErzCtrNE1FdqGuaO0pi2JGjmE8aW8TDZwzU7vuxcGRdL/4gPQwQ7hD5AMSw==}
     engines: {node: '>= 14'}
@@ -5858,13 +5850,13 @@ snapshots:
       rfdc: 1.4.1
       yaml: 2.5.0
 
-  '@fastify/swagger@8.15.0':
+  '@fastify/swagger@9.0.0':
     dependencies:
-      fastify-plugin: 4.5.1
+      fastify-plugin: 5.0.0
       json-schema-resolver: 2.0.0
       openapi-types: 12.1.3
       rfdc: 1.4.1
-      yaml: 2.4.5
+      yaml: 2.5.0
     transitivePeerDependencies:
       - supports-color
 
@@ -6546,7 +6538,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 7.16.0
       '@typescript-eslint/visitor-keys': 7.16.0
-      debug: 4.3.4
+      debug: 4.3.5
       globby: 11.1.0
       is-glob: 4.0.3
       minimatch: 9.0.4
@@ -7919,8 +7911,6 @@ snapshots:
   fast-json-stable-stringify@2.1.0: {}
 
   fast-levenshtein@2.0.6: {}
-
-  fastify-plugin@4.5.1: {}
 
   fastify-plugin@5.0.0: {}
 
@@ -10851,8 +10841,6 @@ snapshots:
   yallist@4.0.0: {}
 
   yaml@1.10.2: {}
-
-  yaml@2.4.5: {}
 
   yaml@2.5.0: {}
 
