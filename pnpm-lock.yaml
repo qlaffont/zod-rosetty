@@ -35,7 +35,7 @@ importers:
         version: 7.16.0(eslint@8.57.0)(typescript@5.5.3)
       date-fns:
         specifier: ^4.0.0
-        version: 4.0.0
+        version: 4.1.0
       eslint:
         specifier: 8.57.0
         version: 8.57.0
@@ -1907,8 +1907,8 @@ packages:
   data-urls@1.1.0:
     resolution: {integrity: sha512-YTWYI9se1P55u58gL5GkQHW4P6VJBJ5iBT+B5a7i2Tjadhv52paJG0qHX4A0OR6/t52odI64KP2YvFpkDOi3eQ==}
 
-  date-fns@4.0.0:
-    resolution: {integrity: sha512-6K33+I8fQ5otvHgLIvKK1xmMbLAh0pduyrx7dwMXKiGYeoWhmk6M3Zoak9n7bXHMJQlHq1yqmdGy1QxKddJjUA==}
+  date-fns@4.1.0:
+    resolution: {integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==}
 
   debug@2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
@@ -7239,7 +7239,7 @@ snapshots:
       whatwg-mimetype: 2.3.0
       whatwg-url: 7.1.0
 
-  date-fns@4.0.0: {}
+  date-fns@4.1.0: {}
 
   debug@2.6.9:
     dependencies:
@@ -10019,7 +10019,7 @@ snapshots:
 
   rosetty@3.1.9:
     dependencies:
-      date-fns: 4.0.0
+      date-fns: 4.1.0
       rosetta: 1.1.0
 
   rsvp@4.8.5: {}
