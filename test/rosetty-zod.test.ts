@@ -3,7 +3,6 @@
  */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { enGB } from 'date-fns/locale';
 import { rosetty } from 'rosetty';
 import { z, ZodError, ZodErrorMap } from 'zod';
 
@@ -54,7 +53,7 @@ describe('Rosetty Zod', () => {
   });
 
   describe('translateZodErrorMessage', () => {
-    const { t } = rosetty({ en: { dict: rosettyMap, locale: enGB } }, 'en');
+    const { t } = rosetty({ en: { dict: rosettyMap, locale: "en-GB" } }, 'en');
 
     it('should be able to convert errors with values to string', async () => {
       const schema = z.string().email();

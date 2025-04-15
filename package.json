@@ -1,5 +1,5 @@
 {
-  "version": "1.0.285",
+  "version": "4.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -52,7 +52,6 @@
     "@types/jest": "^29.5.0",
     "@typescript-eslint/eslint-plugin": "7.16.0",
     "@typescript-eslint/parser": "7.16.0",
-    "date-fns": "^4.0.0",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-import": "2.29.1",
@@ -61,7 +60,7 @@
     "husky": "9.0.11",
     "jest": "^29.5.0",
     "prettier": "3.3.3",
-    "rosetty": "^3.0.0",
+    "rosetty": "^4.0.0",
     "ts-jest": "^29.0.5",
     "tsdx": "0.14.1",
     "tslib": "2.6.3",
