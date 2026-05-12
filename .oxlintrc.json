@@ -1,0 +1,21 @@
+{
+  "plugins": ["import", "typescript", "eslint"],
+  "ignorePatterns": [
+    "**/coverage/**",
+    "**/dist/**",
+    "**/node_modules/**",
+    "test/__snapshots__/**"
+  ],
+  "rules": {},
+  "overrides": [
+    {
+      "files": ["*.test.ts", "test/**/*.ts"],
+      "rules": {
+        "typescript/no-explicit-any": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "typescript/ban-ts-comment": "off",
+        "@typescript-eslint/ban-ts-comment": "off"
+      }
+    }
+  ]
+}

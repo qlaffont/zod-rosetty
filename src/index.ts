@@ -1,5 +1,5 @@
-import type { RosettyReturn } from 'rosetty';
-import { defaultErrorMap, ZodErrorMap, ZodIssueCode, ZodParsedType } from 'zod';
+import type { ZodError, ZodErrorMap, ZodIssue } from 'zod';
+import { locales, util } from 'zod';
 
 export type ZodLocaleMap = {
   zod: {
@@ -129,151 +129,209 @@ function joinValues<T extends unknown[]>(array: T, separator = ' | '): string {
     .join(separator);
 }
 
-export const zodRosettyMap: ZodErrorMap = (issue, ctx) => {
-  let message: string;
-  message = defaultErrorMap(issue, ctx).message;
+const enLocaleError = locales.en().localeError;
 
-  switch (issue.code) {
-    case ZodIssueCode.invalid_type:
-      if (issue.received === ZodParsedType.undefined) {
+function zodTypeKeyFromParsed(data: unknown): string {
+  const p = util.parsedType(data);
+  if (p === 'int') return 'integer';
+  if (p === 'Date') return 'date';
+  return p;
+}
+
+function zodTypeKeyFromExpected(expected: string): string {
+  return expected === 'int' ? 'integer' : expected;
+}
+
+function zodTypeKeyFromReceived(input: unknown, issue: Record<string, unknown>): string {
+  const rec = typeof issue.received === 'string' ? issue.received : undefined;
+  if (rec !== undefined) {
+    if (rec === 'Infinity' || rec === '-Infinity') {
+      return 'number';
+    }
+    if (rec === 'Invalid Date') {
+      return 'date';
+    }
+  }
+  return zodTypeKeyFromParsed(input);
+}
+
+function tooKind(origin: string): keyof ZodLocaleMap['zod']['errors']['too_small'] {
+  if (origin === 'int') return 'number';
+  if (origin === 'file') return 'string';
+  return origin as keyof ZodLocaleMap['zod']['errors']['too_small'];
+}
+
+export const zodRosettyMap: ZodErrorMap = (issue) => {
+  const i = issue as ZodIssue;
+  let message: string;
+
+  switch (i.code) {
+    case 'invalid_type': {
+      if (
+        String(i.expected) !== 'undefined' &&
+        util.parsedType(i.input) === 'undefined'
+      ) {
         message = `zod.errors.invalid_type_received_undefined`;
+        break;
+      }
+      const inputInfinity =
+        i.input === Number.POSITIVE_INFINITY ||
+        i.input === Number.NEGATIVE_INFINITY;
+      const recvInfinity =
+        'received' in i &&
+        typeof (i as { received?: unknown }).received === 'string' &&
+        ((i as { received?: string }).received === 'Infinity' ||
+          (i as { received?: string }).received === '-Infinity');
+      if (inputInfinity || recvInfinity) {
+        message = 'zod.errors.not_finite';
+        break;
+      }
+      if (
+        i.expected === 'date' &&
+        i.input instanceof Date &&
+        Number.isNaN(i.input.getTime())
+      ) {
+        message = 'zod.errors.invalid_date';
+        break;
+      }
+      const expectedLabel = zodTypeKeyFromExpected(String(i.expected));
+      const receivedLabel = zodTypeKeyFromReceived(
+        i.input,
+        i as unknown as Record<string, unknown>,
+      );
+      message = `zod.errors.invalid_type - ${JSON.stringify({
+        expected: `zod.types.${expectedLabel}`,
+        received: `zod.types.${receivedLabel}`,
+      })}`;
+      break;
+    }
+    case 'invalid_value': {
+      if (i.values.length === 1) {
+        message = `zod.errors.invalid_literal - ${JSON.stringify({
+          expected: JSON.stringify(i.values[0], jsonStringifyReplacer),
+        })}`;
       } else {
-        message = `zod.errors.invalid_type - ${JSON.stringify({
-          expected: `zod.types.${issue.expected}`,
-          received: `zod.types.${issue.received}`,
+        message = `zod.errors.invalid_enum_value - ${JSON.stringify({
+          options: joinValues([...i.values]),
+          received: i.input,
         })}`;
       }
       break;
-    case ZodIssueCode.invalid_literal:
-      message = `zod.errors.invalid_literal - ${JSON.stringify({
-        expected: JSON.stringify(issue.expected, jsonStringifyReplacer),
-      })}`;
-      break;
-    case ZodIssueCode.unrecognized_keys:
+    }
+    case 'unrecognized_keys':
       message = `zod.errors.unrecognized_keys - ${JSON.stringify({
-        keys: joinValues(issue.keys, ', '),
-        count: issue.keys.length,
+        keys: joinValues(i.keys, ', '),
+        count: i.keys.length,
       })}`;
       break;
-    case ZodIssueCode.invalid_union:
-      message = 'zod.errors.invalid_union';
-      break;
-    case ZodIssueCode.invalid_union_discriminator:
-      message = `zod.errors.invalid_union_discriminator - ${JSON.stringify({
-        options: joinValues(issue.options),
-      })}`;
-      break;
-    case ZodIssueCode.invalid_enum_value:
-      message = `zod.errors.invalid_enum_value - ${JSON.stringify({
-        options: joinValues(issue.options),
-        received: issue.received,
-      })}`;
-      break;
-    case ZodIssueCode.invalid_arguments:
-      message = 'zod.errors.invalid_arguments';
-      break;
-    case ZodIssueCode.invalid_return_type:
-      message = 'zod.errors.invalid_return_type';
-      break;
-    case ZodIssueCode.invalid_date:
-      message = 'zod.errors.invalid_date';
-      break;
-    case ZodIssueCode.invalid_string:
-      if (typeof issue.validation === 'object') {
-        if ('startsWith' in issue.validation) {
-          message = `zod.errors.invalid_string.startsWith - ${JSON.stringify({
-            startsWith: issue.validation.startsWith,
-          })}`;
-        } else if ('endsWith' in issue.validation) {
-          message = `zod.errors.invalid_string.endsWith - ${JSON.stringify({
-            endsWith: issue.validation.endsWith,
-          })}`;
-        }
-      } else {
-        message = `zod.errors.invalid_string.${
-          issue.validation
-        } - ${JSON.stringify({
-          validation: `zod.validations.${issue.validation}`,
+    case 'invalid_union':
+      if ('options' in i && Array.isArray(i.options) && i.options.length > 0) {
+        message = `zod.errors.invalid_union_discriminator - ${JSON.stringify({
+          options: joinValues([...i.options]),
         })}`;
+      } else {
+        message = 'zod.errors.invalid_union';
       }
       break;
-    case ZodIssueCode.too_small:
-      // eslint-disable-next-line no-case-declarations
+    case 'invalid_format': {
+      const fmt = i as unknown as Record<string, unknown>;
+      if (fmt.format === 'starts_with') {
+        message = `zod.errors.invalid_string.startsWith - ${JSON.stringify({
+          startsWith: fmt.prefix,
+        })}`;
+        break;
+      }
+      if (fmt.format === 'ends_with') {
+        message = `zod.errors.invalid_string.endsWith - ${JSON.stringify({
+          endsWith: fmt.suffix,
+        })}`;
+        break;
+      }
+      message = `zod.errors.invalid_string.${fmt.format as string} - ${JSON.stringify({
+        validation: `zod.validations.${fmt.format as string}`,
+      })}`;
+      break;
+    }
+    case 'too_small': {
       const minimum =
-        issue.type === 'date'
-          ? new Date(issue.minimum as number)
-          : issue.minimum;
-      message = `zod.errors.too_small.${issue.type}.${
-        issue.exact ? 'exact' : issue.inclusive ? 'inclusive' : 'not_inclusive'
-      } - ${JSON.stringify({
+        i.origin === 'date'
+          ? new Date(Number(i.minimum))
+          : i.minimum;
+      const kind = tooKind(String(i.origin));
+      message = `zod.errors.too_small.${kind}.${i.exact ? 'exact' : i.inclusive ? 'inclusive' : 'not_inclusive'} - ${JSON.stringify({
         minimum,
         count: typeof minimum === 'number' ? minimum : undefined,
       })}`;
       break;
-    case ZodIssueCode.too_big:
-      // eslint-disable-next-line no-case-declarations
+    }
+    case 'too_big': {
       const maximum =
-        issue.type === 'date'
-          ? new Date(issue.maximum as number)
-          : issue.maximum;
-      message = `zod.errors.too_big.${issue.type}.${
-        issue.exact ? 'exact' : issue.inclusive ? 'inclusive' : 'not_inclusive'
-      } - ${JSON.stringify({
+        i.origin === 'date'
+          ? new Date(Number(i.maximum))
+          : i.maximum;
+      const kind = tooKind(String(i.origin));
+      message = `zod.errors.too_big.${kind}.${i.exact ? 'exact' : i.inclusive ? 'inclusive' : 'not_inclusive'} - ${JSON.stringify({
         maximum,
         count: typeof maximum === 'number' ? maximum : undefined,
       })}`;
       break;
-    case ZodIssueCode.custom:
-      message = 'errors.custom';
-      break;
-    case ZodIssueCode.invalid_intersection_types:
-      message = 'zod.errors.invalid_intersection_types';
-      break;
-    case ZodIssueCode.not_multiple_of:
+    }
+    case 'not_multiple_of':
       message = `zod.errors.not_multiple_of - ${JSON.stringify({
-        multipleOf: issue.multipleOf,
+        multipleOf: i.divisor,
       })}`;
       break;
-    case ZodIssueCode.not_finite:
-      message = 'zod.errors.not_finite';
+    case 'invalid_key':
+    case 'invalid_element':
+      message = 'zod.errors.invalid_union';
       break;
-    default:
+    case 'custom':
+      message = 'errors.custom';
+      break;
+    default: {
+      const fb = enLocaleError(issue);
+      message = typeof fb === 'string' ? fb : fb?.message ?? 'Invalid input';
+    }
   }
 
   return { message };
 };
 
-export const translateZodErrorMessage = (
-  error: { message: string | ZodErrorMap } | undefined,
-  t: RosettyReturn<ZodLocaleMap>['t'],
-) => {
-  if (!error || !t) {
+export function translateZodErrorMessage(
+  error: ZodError | undefined,
+  /** Rosetty `t` translator (narrow keys are inferred at call sites via rosetty). */
+  t?: unknown,
+): string | undefined {
+  if (!error || typeof t !== 'function') {
     return undefined;
   }
+
+  const tr = t as (key: string, params?: Record<string, unknown>) => string | undefined;
 
   const message =
     typeof error.message === 'string' && !error.message.startsWith('[')
       ? error.message
-      : //@ts-ignore
-        JSON.parse(error.message)[0].message;
+      : JSON.parse(error.message)[0].message;
 
-  const [key, valuesString] = message.split('-').map((i: string) => i.trim());
+  const [key, valuesString] = message.split('-').map((part: string) => part.trim());
 
   if (!valuesString) {
-    //@ts-ignore
-    return t(key);
+    return tr(key);
   }
   const values = JSON.parse(valuesString);
 
   for (const [k, v] of Object.entries(values)) {
     if (typeof v === 'string' && v.startsWith('zod.')) {
-      const [key, valuesString] = v.split('-').map((i) => i.trim());
-      //@ts-ignore
-      values[k] = t(key, valuesString ? JSON.parse(valuesString) : {});
+      const [nestedKey, nestedValuesString] = v.split('-').map((part) =>
+        part.trim(),
+      );
+      values[k] = tr(
+        nestedKey,
+        nestedValuesString ? JSON.parse(nestedValuesString) : {},
+      );
       continue;
     }
   }
 
-  //@ts-ignore
-  return t(key, values);
-};
+  return tr(key, values);
+}

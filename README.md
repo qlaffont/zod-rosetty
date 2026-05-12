@@ -9,7 +9,7 @@ Inspired by [aiji42/zod-i18n](https://github.com/aiji42/zod-i18n) .
 
 ```bash
 
-pnpm install zod-rosetty zod rosetty
+bun add zod-rosetty zod rosetty
 
 ```
 
@@ -52,9 +52,9 @@ translateZodErrorMessage(schema.safeParse('test').error, t) // 'Invalid email'
 To test this package:
 
 ```bash
-pnpm test
+bun test
 ```
 
 ## Maintain
 
-This package use [TSdx](https://github.com/jaredpalmer/tsdx). Please check documentation to update this package.
+Development uses [Bun](https://bun.sh) (install, scripts) and [bunup](https://bunup.dev/) for builds. Run `bun install`, then `bun run lint`, `bun run test`, and `bun run build`.

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
 
 exports[`Rosetty Zod test all schema should be able to validate all schema 1`] = `"zod.errors.invalid_type_received_undefined"`;
 
@@ -20,7 +20,7 @@ exports[`Rosetty Zod test all schema should be able to validate all schema 9`] =
 
 exports[`Rosetty Zod test all schema should be able to validate all schema 10`] = `"errors.custom"`;
 
-exports[`Rosetty Zod test all schema should be able to validate all schema 11`] = `"zod.errors.invalid_intersection_types"`;
+exports[`Rosetty Zod test all schema should be able to validate all schema 11`] = `"zod.errors.invalid_type - {"expected":"zod.types.number","received":"zod.types.string"}"`;
 
 exports[`Rosetty Zod test all schema should be able to validate all schema 12`] = `"zod.errors.not_multiple_of - {"multipleOf":3}"`;
 
@@ -32,6 +32,6 @@ exports[`Rosetty Zod test all schema should be able to validate all schema 15`] 
 
 exports[`Rosetty Zod test all schema should be able to validate all schema 16`] = `"zod.errors.invalid_date"`;
 
-exports[`Rosetty Zod test all schema should be able to validate all schema 17`] = `"zod.errors.invalid_return_type"`;
+exports[`Rosetty Zod test all schema should be able to validate all schema 17`] = `"zod.errors.invalid_type - {"expected":"zod.types.boolean","received":"zod.types.number"}"`;
 
-exports[`Rosetty Zod test all schema should be able to validate all schema 18`] = `"zod.errors.invalid_arguments"`;
+exports[`Rosetty Zod test all schema should be able to validate all schema 18`] = `"zod.errors.invalid_type - {"expected":"zod.types.string","received":"zod.types.number"}"`;
